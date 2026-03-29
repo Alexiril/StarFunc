@@ -97,6 +97,24 @@ namespace StarFunc.Gameplay
                 star.SetState(star.Config.InitialState);
         }
 
+        /// <summary>
+        /// Set all stars to Hidden state (used by Memory Mode after preview expires).
+        /// </summary>
+        public void HideAll()
+        {
+            foreach (var star in _stars.Values)
+                star.SetState(StarState.Hidden);
+        }
+
+        /// <summary>
+        /// Set all stars to their initial states (used by Memory Mode to show reference).
+        /// </summary>
+        public void ShowAll()
+        {
+            foreach (var star in _stars.Values)
+                star.SetState(star.Config.InitialState);
+        }
+
         public void ClearAll()
         {
             foreach (var star in _stars.Values)

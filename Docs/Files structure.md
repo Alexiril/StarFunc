@@ -90,7 +90,8 @@ Assets/Scripts/
 │   │   ├── LevelTimer.cs                   # Таймер уровня (отображение + аналитика)
 │   │   ├── HintSystem.cs                   # Система подсказок (туториалы, подсказки по ошибкам)
 │   │   ├── ActionHistory.cs                # Стек действий для Undo/Reset
-│   │   └── LevelResultCalculator.cs        # Подсчёт результата (звёзды, фрагменты)
+│   │   ├── LevelResultCalculator.cs        # Подсчёт результата (звёзды, фрагменты)
+│   │   └── ReconciliationHandler.cs        # Серверная проверка (reconciliation) через POST /check/level
 │   │
 │   └── FunctionEditor/                     # Редактор функции (для AdjustGraph / BuildFunction)
 │       └── FunctionEditor.cs               # Управление слайдерами параметров и drag-точками
@@ -102,11 +103,15 @@ Assets/Scripts/
 │   │
 │   ├── Economy/
 │   │   ├── IEconomyService.cs              # Интерфейс: фрагменты — начисление, расход, баланс
-│   │   └── EconomyService.cs               # Реализация экономики фрагментов
+│   │   ├── LocalEconomyService.cs          # Локальная реализация экономики фрагментов
+│   │   ├── ServerEconomyService.cs         # REST-обёртка серверной экономики (GET /economy/balance, POST /economy/transaction)
+│   │   └── HybridEconomyService.cs         # Составной сервис: online → сервер, offline → локально + SyncQueue
 │   │
 │   ├── Lives/
 │   │   ├── ILivesService.cs                # Интерфейс: жизни — списание, восстановление, таймер
-│   │   └── LivesService.cs                 # Реализация системы жизней
+│   │   ├── LocalLivesService.cs            # Локальная реализация системы жизней
+│   │   ├── ServerLivesService.cs           # REST-обёртка серверных жизней (GET /lives, POST /lives/restore[-all])
+│   │   └── HybridLivesService.cs           # Составной сервис: online → сервер, offline → локальный таймер
 │   │
 │   ├── Timer/
 │   │   ├── ITimerService.cs                # Интерфейс: таймер уровня (старт, пауза, остановка)
@@ -114,7 +119,9 @@ Assets/Scripts/
 │   │
 │   ├── Shop/
 │   │   ├── IShopService.cs                 # Интерфейс: магазин — покупка за фрагменты
-│   │   └── ShopService.cs                  # Реализация магазина
+│   │   ├── LocalShopService.cs             # Локальная реализация магазина
+│   │   ├── ServerShopService.cs            # REST-обёртка серверного магазина (GET /shop/items, POST /shop/purchase)
+│   │   └── HybridShopService.cs            # Составной сервис: online → сервер, offline → локально + cachedPrice
 │   │
 │   ├── Notifications/
 │   │   ├── INotificationService.cs         # Интерфейс: бэйджи, новый контент, невостребованные награды
@@ -165,17 +172,34 @@ Assets/Scripts/
 │       ├── AnswerPanel.cs                  # Панель вариантов ответа (BottomBar)
 │       └── StarRatingDisplay.cs            # Отображение звёзд рейтинга (экран результата, карта)
 │
-└── Infrastructure/                         # Сохранения, загрузка сцен, аналитика
+├── Infrastructure/                         # Сохранения, загрузка сцен, сеть, авторизация, аналитика
     ├── Save/
     │   ├── ISaveService.cs                 # Интерфейс: Load, Save, Delete, HasSave
-    │   └── SaveService.cs                  # Реализация: JSON в persistentDataPath, контрольная сумма, автосохранение
+    │   ├── LocalSaveService.cs             # Локальная реализация: JSON в persistentDataPath, контрольная сумма, автосохранение
+    │   ├── CloudSaveClient.cs              # REST-клиент облачных сохранений (GET/PUT /save, optimistic lock)
+    │   ├── SaveMerger.cs                   # Логика мержа конфликтов (локальное vs серверное сохранение)
+    │   └── HybridSaveService.cs            # Составной сервис: локальное + облачное, ISaveService
+    │
+    ├── Network/
+    │   ├── ApiClient.cs                    # Обёртка над UnityWebRequest: Get/Post/Put, retry, заголовки, gzip
+    │   ├── ApiEndpoints.cs                 # Статические константы URL всех серверных эндпоинтов
+    │   ├── NetworkMonitor.cs               # Отслеживание состояния сети (IsOnline, OnConnectivityChanged)
+    │   ├── TokenManager.cs                 # Хранение и обновление JWT (access + encrypted refresh)
+    │   ├── ContentService.cs               # Загрузчик удалённой конфигурации (секторы, уровни, баланс) + bundled fallback
+    │   ├── LevelCheckClient.cs             # REST-клиент серверной проверки ответов (POST /check/level)
+    │   ├── SyncQueue.cs                    # Очередь отложенных мутаций для offline-режима (персистентная)
+    │   └── SyncProcessor.cs               # Обработка SyncQueue при восстановлении сети (FIFO, reconciliation)
+    │
+    ├── Auth/
+    │   └── AuthService.cs                  # Анонимная регистрация, обновление токена, привязка аккаунта
     │
     ├── Scenes/
     │   └── SceneFlowManager.cs             # Управление загрузкой/выгрузкой сцен (аддитивная загрузка Level), порядок инициализации
     │
     ├── Analytics/
     │   ├── IAnalyticsService.cs            # Интерфейс: отправка аналитических событий
-    │   └── AnalyticsService.cs             # Реализация аналитики
+    │   ├── AnalyticsService.cs             # Реализация аналитики (буферизация, ключевые события)
+    │   └── AnalyticsSender.cs              # Батчевая отправка аналитики через REST + offline-буфер
     │
     └── Boot/
         └── BootInitializer.cs              # Инициализация сервисов в Boot-сцене, регистрация в ServiceLocator
@@ -187,8 +211,8 @@ Assets/Scripts/
 | ----------------- | ------ | --------------------------------------------------------------------------- |
 | `Core/`           | 6      | Сервис-локатор, событийная система, утилиты                                 |
 | `Data/`           | 30     | SO-определения, конфиги, runtime-модели, enum                               |
-| `Gameplay/`       | 29     | Координатная плоскость, звёзды, графики, призрак, контроллер уровня         |
-| `Meta/`           | 18     | Прогрессия, экономика, жизни, таймер, магазин, уведомления, аудио, feedback |
+| `Gameplay/`       | 30     | Координатная плоскость, звёзды, графики, призрак, контроллер уровня, reconciliation |
+| `Meta/`           | 24     | Прогрессия, экономика, жизни, таймер, магазин, уведомления, аудио, feedback (Local + Server + Hybrid) |
 | `UI/`             | 22     | Экраны, попапы, оверлеи, виджеты, UI-менеджер                               |
-| `Infrastructure/` | 6      | Сохранения, сцены, аналитика, инициализация                                 |
-| **Итого**         | 111    |                                                                             |
+| `Infrastructure/` | 19     | Сохранения (Local + Cloud + Hybrid), сеть, авторизация, сцены, аналитика, инициализация |
+| **Итого**         | 131    |                                                                             |

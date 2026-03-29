@@ -12,11 +12,13 @@ namespace StarFunc.Gameplay
         None,
         Initialize,
         ShowTask,
+        MemoryPreview,
         AwaitInput,
         ValidateAnswer,
         CalculateResult,
         ShowResult,
-        Complete
+        Complete,
+        Failed
     }
 
     /// <summary>
@@ -45,15 +47,22 @@ namespace StarFunc.Gameplay
         List<StarConfig> _solutionStars;
         int _currentStarIndex;
         int _errorCount;
+        int _attemptCount;
+        string _failReason;
+        int _visibleSegments;
 
         ValidationSystem _validationSystem;
         LevelResultCalculator _resultCalculator;
         ActionHistory _actionHistory;
         LevelTimer _levelTimer;
+        ILivesService _livesService;
 
         public LevelState CurrentState => _currentState;
         public LevelData LevelData => _levelData;
         public int ErrorCount => _errorCount;
+        public int AttemptCount => _attemptCount;
+        public string FailReason => _failReason;
+        public int VisibleSegments => _visibleSegments;
         public float ElapsedTime => _levelTimer?.GetElapsedTime() ?? 0f;
         public ActionHistory ActionHistory => _actionHistory;
         public LevelTimer Timer => _levelTimer;
@@ -81,12 +90,26 @@ namespace StarFunc.Gameplay
         {
             _levelData = data;
             _errorCount = 0;
+            _attemptCount = 0;
+            _failReason = null;
+
+            // Resolve lives service if registered.
+            _livesService = ServiceLocator.Contains<ILivesService>()
+                ? ServiceLocator.Get<ILivesService>()
+                : null;
+
+            // Block entry when the player has no lives.
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                Debug.LogWarning("[LevelController] No lives remaining — level entry blocked.");
+                FailLevel("no_lives");
+                return;
+            }
 
             _validationSystem = new ValidationSystem();
             _resultCalculator = new LevelResultCalculator();
             _actionHistory = new ActionHistory();
             _levelTimer = new LevelTimer();
-            _levelTimer.Start();
 
             SetState(LevelState.Initialize);
 
@@ -103,6 +126,10 @@ namespace StarFunc.Gameplay
 
             _currentStarIndex = 0;
 
+            // Initialize partial graph reveal.
+            if (data.GraphVisibility.PartialReveal)
+                _visibleSegments = data.GraphVisibility.InitialVisibleSegments;
+
             // Subscribe to answer confirmations.
             _answerSystem.OnAnswerConfirmed += OnAnswerSubmitted;
 
@@ -112,6 +139,37 @@ namespace StarFunc.Gameplay
             Debug.Log($"[LevelController] Initialized level '{data.LevelId}': " +
                       $"{_solutionStars.Count} solution stars, taskType={data.TaskType}");
 
+            // Memory Mode: show reference, then hide after duration.
+            if (data.UseMemoryMode && data.MemoryDisplayDuration > 0f)
+            {
+                StartCoroutine(RunMemoryPreview(data.MemoryDisplayDuration));
+            }
+            else
+            {
+                _levelTimer.Start();
+                ShowTask();
+            }
+        }
+
+        /// <summary>
+        /// Show the reference constellation for a set duration, then hide and begin play.
+        /// </summary>
+        IEnumerator RunMemoryPreview(float duration)
+        {
+            SetState(LevelState.MemoryPreview);
+
+            // Stars are already visible from SpawnStars (InitialState).
+            _starManager.ShowAll();
+            _answerSystem.SetActive(false);
+
+            Debug.Log($"[LevelController] Memory Mode: showing reference for {duration}s");
+
+            yield return new WaitForSeconds(duration);
+
+            // Hide all stars — player must restore from memory.
+            _starManager.HideAll();
+
+            _levelTimer.Start();
             ShowTask();
         }
 
@@ -227,6 +285,13 @@ namespace StarFunc.Gameplay
         {
             _currentStarIndex++;
 
+            // Reveal more graph segments on correct action (GraphVisibilityConfig).
+            if (_levelData.GraphVisibility.PartialReveal)
+            {
+                _visibleSegments += _levelData.GraphVisibility.RevealPerCorrectAction;
+                Debug.Log($"[LevelController] Partial reveal: {_visibleSegments} segments visible");
+            }
+
             if (_currentStarIndex >= _solutionStars.Count)
             {
                 CalculateResult();
@@ -239,10 +304,12 @@ namespace StarFunc.Gameplay
 
         /// <summary>
         /// Handle an incorrect answer.
+        /// Lives are deducted once per confirmed attempt, not per local error.
         /// </summary>
         void FailAttempt(StarConfig config)
         {
             _errorCount++;
+            _attemptCount++;
 
             var entity = _starManager.GetStar(config.StarId);
             if (entity != null)
@@ -271,18 +338,44 @@ namespace StarFunc.Gameplay
 
         void ResumeAfterError(StarConfig config)
         {
-            // Check if max attempts exceeded.
-            if (_levelData.MaxAttempts > 0 && _errorCount >= _levelData.MaxAttempts)
+            // Check max attempts.
+            if (_levelData.MaxAttempts > 0 && _attemptCount >= _levelData.MaxAttempts)
             {
-                Debug.Log($"[LevelController] Max attempts ({_levelData.MaxAttempts}) reached. Level failed.");
-                if (_onLevelFailed) _onLevelFailed.Raise();
-                SetState(LevelState.Complete);
+                Debug.Log($"[LevelController] Max attempts ({_levelData.MaxAttempts}) reached.");
+                FailLevel("max_attempts_reached");
+                return;
+            }
+
+            // Check lives (server deducts on POST /check/level; client reconciles).
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                Debug.Log("[LevelController] No lives remaining after attempt.");
+                FailLevel("no_lives");
                 return;
             }
 
             // Let the player retry the same star.
             _answerSystem.ResetSelection();
             AwaitInput();
+        }
+
+        /// <summary>
+        /// End the level as failed with the given reason.
+        /// </summary>
+        void FailLevel(string failReason)
+        {
+            _failReason = failReason;
+            _levelTimer?.Stop();
+
+            var result = _resultCalculator.Calculate(
+                _levelData, _errorCount, _levelTimer?.GetElapsedTime() ?? 0f,
+                null, 0, failReason);
+            _ = result; // Will be forwarded to fail screen (Task 2.6).
+
+            Debug.Log($"[LevelController] Level failed: {failReason}");
+
+            if (_onLevelFailed) _onLevelFailed.Raise();
+            SetState(LevelState.Failed);
         }
 
         /// <summary>
@@ -293,10 +386,13 @@ namespace StarFunc.Gameplay
             SetState(LevelState.CalculateResult);
 
             _levelTimer.Stop();
-            var result = _resultCalculator.Calculate(_levelData, _errorCount, _levelTimer.GetElapsedTime());
+            var result = _resultCalculator.Calculate(
+                _levelData, _errorCount, _levelTimer.GetElapsedTime(),
+                null, 0, _failReason);
 
             Debug.Log($"[LevelController] Result: {result.Stars} stars, {result.Time:F1}s, " +
-                      $"{result.Errors} errors, {result.FragmentsEarned} fragments");
+                      $"{result.ErrorCount} errors, {result.FragmentsEarned} fragments" +
+                      (result.ImprovementBonus > 0 ? $" (+{result.ImprovementBonus} improvement)" : ""));
 
             ShowResult(result);
         }

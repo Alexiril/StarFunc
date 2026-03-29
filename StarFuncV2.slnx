@@ -3,7 +3,7 @@
   <Project Path="StarFunc.Core.csproj" />
   <Project Path="StarFunc.Input.csproj" />
   <Project Path="StarFunc.Gameplay.csproj" />
+  <Project Path="StarFunc.Infrastructure.csproj" />
   <Project Path="StarFunc.UI.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="StarFunc.Infrastructure.csproj" />
 </Solution>

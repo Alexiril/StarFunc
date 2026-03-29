@@ -104,7 +104,7 @@ namespace StarFunc.Gameplay
 
                 default:
                     Debug.LogWarning($"[ValidationSystem] ValidateLevel not implemented for TaskType.{level.TaskType}.");
-                    return new LevelResult { Stars = 0, Errors = 0, Time = 0f, FragmentsEarned = 0 };
+                    return new LevelResult { IsValid = false, Stars = 0, ErrorCount = 0, Time = 0f, FragmentsEarned = 0, MatchPercentage = 0f, Errors = System.Array.Empty<string>() };
             }
         }
 

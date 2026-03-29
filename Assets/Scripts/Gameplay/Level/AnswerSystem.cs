@@ -101,6 +101,7 @@ namespace StarFunc.Gameplay
             return new PlayerAnswer
             {
                 TaskType = _currentTaskType,
+                AnswerType = AnswerType.ChooseOption,
                 SelectedOptionId = option.OptionId,
                 SelectedCoordinate = new Vector2(option.Value, 0f)
             };
