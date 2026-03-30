@@ -1,6 +1,7 @@
 """Common Pydantic schemas: ApiResponse, ApiErrorResponse."""
 
 import time
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -16,7 +17,7 @@ class ApiResponse[T](BaseModel):
 class ErrorDetail(BaseModel):
     code: str
     message: str
-    details: dict | None = None
+    details: dict[str, Any] | None = None
 
 
 class ApiErrorResponse(BaseModel):

@@ -35,4 +35,4 @@ async def get_retry_after(redis: Redis, *, identifier: str, endpoint: str) -> in
     """Return remaining TTL in seconds for the rate-limit window."""
     key = f"{_PREFIX}:{identifier}:{endpoint}"
     ttl = await redis.ttl(key)
-    return max(ttl, 1)
+    return int(max(ttl, 1))

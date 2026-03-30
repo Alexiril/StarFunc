@@ -7,7 +7,7 @@ import time
 import structlog
 from fastapi import Request, Response
 from fastapi.responses import JSONResponse
-from jose import JWTError
+from jose import JWTError  # type: ignore[import-untyped]
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
 from app.infrastructure.cache.rate_limiter import check_rate_limit, get_retry_after
@@ -46,10 +46,11 @@ class RateLimitingMiddleware(BaseHTTPMiddleware):
         if is_auth:
             identifier = _get_client_ip(request)
         else:
-            identifier = _extract_player_id(request, settings)
-            if identifier is None:
+            player_id = _extract_player_id(request, settings)
+            if player_id is None:
                 # No player_id available — let the auth dependency handle rejection
                 return await call_next(request)
+            identifier = player_id
 
         endpoint_key = route_group.replace("/", "_").strip("_")
         allowed = await check_rate_limit(redis, identifier=identifier, endpoint=endpoint_key, limit=limit)
@@ -106,6 +107,7 @@ def _extract_player_id(request: Request, settings: object) -> str | None:
             audience="starfunc-client",
             issuer="starfunc-api",
         )
-        return payload.get("sub")
+        sub = payload.get("sub")
+        return str(sub) if sub is not None else None
     except JWTError:
         return None

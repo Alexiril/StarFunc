@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -64,7 +65,8 @@ namespace StarFunc.Infrastructure
 
         static readonly JsonSerializerSettings JsonSettings = new()
         {
-            NullValueHandling = NullValueHandling.Ignore
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 
         public ApiClient(TokenManager tokenManager, NetworkMonitor networkMonitor)

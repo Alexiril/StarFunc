@@ -13,7 +13,7 @@ logger = structlog.stdlib.get_logger()
 
 async def create_redis_pool(redis_url: str) -> Redis:
     """Create and verify a Redis connection pool."""
-    redis: Redis = Redis.from_url(redis_url, decode_responses=True)  # type: ignore
+    redis: Redis = Redis.from_url(redis_url, decode_responses=True)  # pyright: ignore[reportUnknownMemberType]
     await redis.ping()  # type: ignore[misc]
     await logger.ainfo("redis_connected", url=redis_url.split("@")[-1])
     return redis

@@ -1,8 +1,9 @@
 import hashlib
 from datetime import UTC, datetime, timedelta
+from typing import Any
 from uuid import UUID, uuid4
 
-from jose import jwt
+from jose import jwt  # type: ignore[import-untyped]
 
 from app.config import Settings
 
@@ -27,7 +28,7 @@ class JwtProvider:
             "iss": self._ISSUER,
             "aud": self._AUDIENCE,
         }
-        return jwt.encode(payload, self._secret, algorithm=self._algorithm)
+        return str(jwt.encode(payload, self._secret, algorithm=self._algorithm))
 
     def create_refresh_token(self, player_id: UUID) -> str:
         now = datetime.now(UTC)
@@ -38,23 +39,27 @@ class JwtProvider:
             "type": "refresh",
             "jti": str(uuid4()),
         }
-        return jwt.encode(payload, self._secret, algorithm=self._algorithm)
+        return str(jwt.encode(payload, self._secret, algorithm=self._algorithm))
 
-    def decode(self, token: str) -> dict:
-        return jwt.decode(
-            token,
-            self._secret,
-            algorithms=[self._algorithm],
-            audience=self._AUDIENCE,
-            issuer=self._ISSUER,
+    def decode(self, token: str) -> dict[str, Any]:
+        return dict(
+            jwt.decode(
+                token,
+                self._secret,
+                algorithms=[self._algorithm],
+                audience=self._AUDIENCE,
+                issuer=self._ISSUER,
+            )
         )
 
-    def decode_refresh(self, token: str) -> dict:
+    def decode_refresh(self, token: str) -> dict[str, Any]:
         """Decode a refresh token (no audience/issuer validation)."""
-        return jwt.decode(
-            token,
-            self._secret,
-            algorithms=[self._algorithm],
+        return dict(
+            jwt.decode(
+                token,
+                self._secret,
+                algorithms=[self._algorithm],
+            )
         )
 
     @staticmethod

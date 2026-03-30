@@ -18,7 +18,7 @@ class ServerTimeMiddleware(BaseHTTPMiddleware):
             return response
 
         body = b""
-        async for chunk in response.body_iterator:  # type: ignore[union-attr]
+        async for chunk in response.body_iterator:  # type: ignore[attr-defined]
             body += chunk if isinstance(chunk, bytes) else chunk.encode()
 
         try:

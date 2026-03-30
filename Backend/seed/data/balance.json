@@ -1,0 +1,8 @@
+{
+    "maxLives": 5,
+    "restoreIntervalSeconds": 1800,
+    "restoreCostFragments": 20,
+    "skipLevelCostFragments": 100,
+    "improvementBonusPerStar": 5,
+    "hintCostFragments": 10
+}

@@ -1,0 +1,92 @@
+[
+    {
+        "itemId": "hint_pack_3",
+        "displayName": "Пакет подсказок (3 шт.)",
+        "description": "Получите 3 дополнительные подсказки для сложных уровней",
+        "category": "Hints",
+        "price": 30,
+        "isConsumable": true,
+        "quantity": 3
+    },
+    {
+        "itemId": "hint_pack_5",
+        "displayName": "Пакет подсказок (5 шт.)",
+        "description": "Получите 5 дополнительных подсказок для сложных уровней",
+        "category": "Hints",
+        "price": 50,
+        "isConsumable": true,
+        "quantity": 5
+    },
+    {
+        "itemId": "hint_pack_10",
+        "displayName": "Пакет подсказок (10 шт.)",
+        "description": "Большая упаковка: 10 подсказок со скидкой",
+        "category": "Hints",
+        "price": 80,
+        "isConsumable": true,
+        "quantity": 10
+    },
+    {
+        "itemId": "life_restore_full",
+        "displayName": "Полное восстановление жизней",
+        "description": "Мгновенно восстановить все жизни до максимума",
+        "category": "Lives",
+        "price": 40,
+        "isConsumable": true,
+        "quantity": 1
+    },
+    {
+        "itemId": "skip_level",
+        "displayName": "Пропуск уровня",
+        "description": "Пропустить текущий уровень и перейти к следующему",
+        "category": "Skip",
+        "price": 100,
+        "isConsumable": true,
+        "quantity": 1
+    },
+    {
+        "itemId": "skin_neon_ghost",
+        "displayName": "Неоновый призрак",
+        "description": "Светящиеся неоновые звёзды и следы на координатной плоскости",
+        "category": "Customization",
+        "price": 200,
+        "isConsumable": false,
+        "quantity": null
+    },
+    {
+        "itemId": "skin_pixel_retro",
+        "displayName": "Пиксельное ретро",
+        "description": "Ретро-пиксельный стиль звёзд и сетки в духе 8-бит",
+        "category": "Customization",
+        "price": 200,
+        "isConsumable": false,
+        "quantity": null
+    },
+    {
+        "itemId": "theme_dark_grid",
+        "displayName": "Тёмная сетка",
+        "description": "Тёмная тема координатной плоскости с контрастной сеткой",
+        "category": "Customization",
+        "price": 150,
+        "isConsumable": false,
+        "quantity": null
+    },
+    {
+        "itemId": "theme_ocean_blue",
+        "displayName": "Океанская глубина",
+        "description": "Сине-голубая тема с волновыми эффектами на плоскости",
+        "category": "Customization",
+        "price": 150,
+        "isConsumable": false,
+        "quantity": null
+    },
+    {
+        "itemId": "theme_sunset_warm",
+        "displayName": "Тёплый закат",
+        "description": "Тёплые оранжево-красные тона с мягким свечением звёзд",
+        "category": "Customization",
+        "price": 150,
+        "isConsumable": false,
+        "quantity": null
+    }
+]

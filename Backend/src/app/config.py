@@ -38,4 +38,4 @@ class Settings(BaseSettings):
     rate_limit_content: int = 30
     rate_limit_shop: int = 30
 
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
+    model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}

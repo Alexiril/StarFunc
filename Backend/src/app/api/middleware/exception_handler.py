@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from typing import Any
 
 import structlog
 from fastapi import Request, Response
@@ -39,9 +40,9 @@ def _error_response(
     status_code: int,
     code: str,
     message: str,
-    details: dict | None = None,
+    details: dict[str, Any] | None = None,
 ) -> JSONResponse:
-    error: dict = {"code": code, "message": message}
+    error: dict[str, Any] = {"code": code, "message": message}
     if details is not None:
         error["details"] = details
     return JSONResponse(

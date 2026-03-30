@@ -1,6 +1,7 @@
 """AuthService — registration, token refresh, theft detection, account linking."""
 
 from datetime import UTC, datetime, timedelta
+from typing import Any
 from uuid import UUID
 
 from fastapi import HTTPException, status
@@ -17,7 +18,7 @@ from app.infrastructure.persistence.models import PlayerSaveModel, RefreshTokenM
 from app.infrastructure.persistence.player_repo import PlayerRepository
 
 # Default save data for newly registered players
-_DEFAULT_SAVE_DATA: dict = {
+_DEFAULT_SAVE_DATA: dict[str, Any] = {
     "saveVersion": 1,
     "version": 1,
     "lastModified": 0,
@@ -58,6 +59,7 @@ class AuthService:
             )
             session.add(save)
 
+        assert player is not None
         access_token = self._jwt.create_access_token(player.id, request.platform.value)
         refresh_token = self._jwt.create_refresh_token(player.id)
 
@@ -146,7 +148,7 @@ class AuthService:
 
         # Verify token with the appropriate provider
         if request.provider == "google_play":
-            verifier = GooglePlayVerifier()
+            verifier: GooglePlayVerifier | AppleGameCenterVerifier = GooglePlayVerifier()
             provider_id = await verifier.verify(request.provider_token)
             existing = await repo.find_by_google_play_id(provider_id)
         else:

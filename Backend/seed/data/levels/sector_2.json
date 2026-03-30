@@ -1,0 +1,2330 @@
+[
+  {
+    "levelId": "sector_2_level_00",
+    "levelIndex": 0,
+    "sectorId": "sector_2",
+    "type": "Tutorial",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l00_star_1",
+        "coordinate": {
+          "x": -3,
+          "y": -4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l00_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l00_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": 0.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l00_01",
+        "type": "Linear",
+        "coefficients": [
+          1.0,
+          -1.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(2, 1)",
+        "value": "2,1",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(2, 2)",
+        "value": "2,2",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(3, 1)",
+        "value": "3,1",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(2, 0)",
+        "value": "2,0",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 1,
+      "twoStarMaxErrors": 2,
+      "oneStarMaxErrors": 4,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 5
+  },
+  {
+    "levelId": "sector_2_level_01",
+    "levelIndex": 1,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l01_star_1",
+        "coordinate": {
+          "x": -2,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l01_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l01_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l01_star_4",
+        "coordinate": {
+          "x": 1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l01_01",
+        "type": "Linear",
+        "coefficients": [
+          2.0,
+          1.0
+        ],
+        "domainRange": {
+          "x": -3,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(2, 5)",
+        "value": "2,5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(2, 6)",
+        "value": "2,6",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(3, 5)",
+        "value": "3,5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(2, 4)",
+        "value": "2,4",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_02",
+    "levelIndex": 2,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l02_star_1",
+        "coordinate": {
+          "x": -2,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l02_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l02_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l02_star_4",
+        "coordinate": {
+          "x": 1,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l02_01",
+        "type": "Linear",
+        "coefficients": [
+          -1.0,
+          2.0
+        ],
+        "domainRange": {
+          "x": -3,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = -x + 2",
+        "value": "y = -x + 2",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 0x + 2",
+        "value": "y = 0x + 2",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = -x + 3",
+        "value": "y = -x + 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = x + 2",
+        "value": "y = x + 2",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_03",
+    "levelIndex": 3,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l03_star_1",
+        "coordinate": {
+          "x": -1,
+          "y": -5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l03_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l03_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l03_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l03_01",
+        "type": "Linear",
+        "coefficients": [
+          3.0,
+          -2.0
+        ],
+        "domainRange": {
+          "x": -2,
+          "y": 3
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(3, 7)",
+        "value": "3,7",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(3, 8)",
+        "value": "3,8",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(4, 7)",
+        "value": "4,7",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(3, 6)",
+        "value": "3,6",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_04",
+    "levelIndex": 4,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l04_star_1",
+        "coordinate": {
+          "x": -4,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l04_star_2",
+        "coordinate": {
+          "x": -2,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l04_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l04_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l04_01",
+        "type": "Linear",
+        "coefficients": [
+          0.5,
+          3.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = 0.5x + 3",
+        "value": "y = 0.5x + 3",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 1.5x + 3",
+        "value": "y = 1.5x + 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = 0.5x + 4",
+        "value": "y = 0.5x + 4",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = -0.5x + 3",
+        "value": "y = -0.5x + 3",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_05",
+    "levelIndex": 5,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l05_star_1",
+        "coordinate": {
+          "x": -1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l05_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l05_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l05_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l05_01",
+        "type": "Linear",
+        "coefficients": [
+          -2.0,
+          1.0
+        ],
+        "domainRange": {
+          "x": -2,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(3, -5)",
+        "value": "3,-5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(3, -4)",
+        "value": "3,-4",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(4, -5)",
+        "value": "4,-5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(3, -6)",
+        "value": "3,-6",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_06",
+    "levelIndex": 6,
+    "sectorId": "sector_2",
+    "type": "Bonus",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l06_star_1",
+        "coordinate": {
+          "x": -3,
+          "y": -5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l06_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l06_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l06_star_4",
+        "coordinate": {
+          "x": 3,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l06_01",
+        "type": "Linear",
+        "coefficients": [
+          1.5,
+          -0.5
+        ],
+        "domainRange": {
+          "x": -4,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = 1.5x - 0.5",
+        "value": "y = 1.5x - 0.5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 2.5x - 0.5",
+        "value": "y = 2.5x - 0.5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = 1.5x - 1.5",
+        "value": "y = 1.5x - 1.5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = -1.5x - 0.5",
+        "value": "y = -1.5x - 0.5",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 2,
+      "timerAffectsRating": true,
+      "threeStarMaxTime": 60
+    },
+    "fragmentReward": 15
+  },
+  {
+    "levelId": "sector_2_level_07",
+    "levelIndex": 7,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l07_star_1",
+        "coordinate": {
+          "x": 0,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l07_star_2",
+        "coordinate": {
+          "x": 1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l07_star_3",
+        "coordinate": {
+          "x": 2,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l07_star_4",
+        "coordinate": {
+          "x": 3,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l07_01",
+        "type": "Linear",
+        "coefficients": [
+          -1.0,
+          4.0
+        ],
+        "domainRange": {
+          "x": -1,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(4, 0)",
+        "value": "4,0",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(4, 1)",
+        "value": "4,1",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(5, 0)",
+        "value": "5,0",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(4, -1)",
+        "value": "4,-1",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_08",
+    "levelIndex": 8,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l08_star_1",
+        "coordinate": {
+          "x": -1,
+          "y": -5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l08_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l08_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l08_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l08_01",
+        "type": "Linear",
+        "coefficients": [
+          2.0,
+          -3.0
+        ],
+        "domainRange": {
+          "x": -2,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = 2x - 3",
+        "value": "y = 2x - 3",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 3x - 3",
+        "value": "y = 3x - 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = 2x - 4",
+        "value": "y = 2x - 4",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = -2x - 3",
+        "value": "y = -2x - 3",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_09",
+    "levelIndex": 9,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l09_star_1",
+        "coordinate": {
+          "x": -4,
+          "y": -4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l09_star_2",
+        "coordinate": {
+          "x": -2,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l09_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l09_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l09_01",
+        "type": "Linear",
+        "coefficients": [
+          0.5,
+          -2.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(3, -0.5)",
+        "value": "3,-0.5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(3, 1)",
+        "value": "3,1",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(4, -0.5)",
+        "value": "4,-0.5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(3, -1)",
+        "value": "3,-1",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_10",
+    "levelIndex": 10,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l10_star_1",
+        "coordinate": {
+          "x": -4,
+          "y": 5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l10_star_2",
+        "coordinate": {
+          "x": -2,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l10_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l10_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l10_01",
+        "type": "Linear",
+        "coefficients": [
+          -0.5,
+          3.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = -0.5x + 3",
+        "value": "y = -0.5x + 3",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 0.5x + 3",
+        "value": "y = 0.5x + 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = -0.5x + 4",
+        "value": "y = -0.5x + 4",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = 0.5x + 3",
+        "value": "y = 0.5x + 3",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_11",
+    "levelIndex": 11,
+    "sectorId": "sector_2",
+    "type": "Bonus",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l11_star_1",
+        "coordinate": {
+          "x": -1,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l11_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l11_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l11_01",
+        "type": "Linear",
+        "coefficients": [
+          3.0,
+          1.0
+        ],
+        "domainRange": {
+          "x": -2,
+          "y": 2
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(2, 7)",
+        "value": "2,7",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(2, 8)",
+        "value": "2,8",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(3, 7)",
+        "value": "3,7",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(2, 6)",
+        "value": "2,6",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 2,
+      "timerAffectsRating": true,
+      "threeStarMaxTime": 60
+    },
+    "fragmentReward": 15
+  },
+  {
+    "levelId": "sector_2_level_12",
+    "levelIndex": 12,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l12_star_1",
+        "coordinate": {
+          "x": -2,
+          "y": 5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l12_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l12_star_3",
+        "coordinate": {
+          "x": 2,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l12_01",
+        "type": "Linear",
+        "coefficients": [
+          -1.5,
+          2.0
+        ],
+        "domainRange": {
+          "x": -3,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = -1.5x + 2",
+        "value": "y = -1.5x + 2",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = -0.5x + 2",
+        "value": "y = -0.5x + 2",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = -1.5x + 3",
+        "value": "y = -1.5x + 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = 1.5x + 2",
+        "value": "y = 1.5x + 2",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_13",
+    "levelIndex": 13,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l13_star_1",
+        "coordinate": {
+          "x": -3,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l13_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l13_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": 5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l13_star_4",
+        "coordinate": {
+          "x": 3,
+          "y": 7.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l13_01",
+        "type": "Linear",
+        "coefficients": [
+          1.0,
+          4.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(4, 8)",
+        "value": "4,8",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(4, 9)",
+        "value": "4,9",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(5, 8)",
+        "value": "5,8",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(4, 7)",
+        "value": "4,7",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_14",
+    "levelIndex": 14,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l14_star_1",
+        "coordinate": {
+          "x": -2,
+          "y": -4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l14_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l14_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 0.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l14_star_4",
+        "coordinate": {
+          "x": 1,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l14_01",
+        "type": "Linear",
+        "coefficients": [
+          2.0,
+          0.0
+        ],
+        "domainRange": {
+          "x": -3,
+          "y": 3
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = 2x",
+        "value": "y = 2x",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 3x",
+        "value": "y = 3x",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = 2x + 1",
+        "value": "y = 2x + 1",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = -2x",
+        "value": "y = -2x",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_15",
+    "levelIndex": 15,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l15_star_1",
+        "coordinate": {
+          "x": 0,
+          "y": 5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l15_star_2",
+        "coordinate": {
+          "x": 1,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l15_star_3",
+        "coordinate": {
+          "x": 2,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l15_star_4",
+        "coordinate": {
+          "x": 3,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l15_01",
+        "type": "Linear",
+        "coefficients": [
+          -2.0,
+          5.0
+        ],
+        "domainRange": {
+          "x": -1,
+          "y": 4
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(4, -3)",
+        "value": "4,-3",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(4, -2)",
+        "value": "4,-2",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(5, -3)",
+        "value": "5,-3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(4, -4)",
+        "value": "4,-4",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_16",
+    "levelIndex": 16,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l16_star_1",
+        "coordinate": {
+          "x": -1,
+          "y": -4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l16_star_2",
+        "coordinate": {
+          "x": 0,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l16_star_3",
+        "coordinate": {
+          "x": 1,
+          "y": -2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l16_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l16_01",
+        "type": "Linear",
+        "coefficients": [
+          1.0,
+          -3.0
+        ],
+        "domainRange": {
+          "x": -2,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = x - 3",
+        "value": "y = x - 3",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 2x - 3",
+        "value": "y = 2x - 3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = x - 4",
+        "value": "y = x - 4",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = -x - 3",
+        "value": "y = -x - 3",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_17",
+    "levelIndex": 17,
+    "sectorId": "sector_2",
+    "type": "Normal",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l17_star_1",
+        "coordinate": {
+          "x": -4,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l17_star_2",
+        "coordinate": {
+          "x": -2,
+          "y": 0.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l17_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l17_star_4",
+        "coordinate": {
+          "x": 2,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l17_01",
+        "type": "Linear",
+        "coefficients": [
+          0.5,
+          1.0
+        ],
+        "domainRange": {
+          "x": -5,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(3, 2.5)",
+        "value": "3,2.5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(3, 3)",
+        "value": "3,3",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(4, 2.5)",
+        "value": "4,2.5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(3, 1)",
+        "value": "3,1",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 3,
+      "timerAffectsRating": false,
+      "threeStarMaxTime": 0
+    },
+    "fragmentReward": 10
+  },
+  {
+    "levelId": "sector_2_level_18",
+    "levelIndex": 18,
+    "sectorId": "sector_2",
+    "type": "Control",
+    "taskType": "ChooseFunction",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l18_star_1",
+        "coordinate": {
+          "x": -3,
+          "y": 4.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l18_star_2",
+        "coordinate": {
+          "x": -2,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l18_star_3",
+        "coordinate": {
+          "x": -1,
+          "y": 2.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l18_star_4",
+        "coordinate": {
+          "x": 0,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l18_star_5",
+        "coordinate": {
+          "x": 1,
+          "y": 0.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l18_01",
+        "type": "Linear",
+        "coefficients": [
+          -1.0,
+          1.0
+        ],
+        "domainRange": {
+          "x": -4,
+          "y": 5
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "y = -x + 1",
+        "value": "y = -x + 1",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "y = 0x + 1",
+        "value": "y = 0x + 1",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "y = -x + 2",
+        "value": "y = -x + 2",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "y = x + 1",
+        "value": "y = x + 1",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 0,
+      "oneStarMaxErrors": 1,
+      "timerAffectsRating": true,
+      "threeStarMaxTime": 45
+    },
+    "fragmentReward": 20
+  },
+  {
+    "levelId": "sector_2_level_19",
+    "levelIndex": 19,
+    "sectorId": "sector_2",
+    "type": "Final",
+    "taskType": "ChooseCoordinate",
+    "coordinatePlane": {
+      "planeMin": {
+        "x": -5,
+        "y": -5
+      },
+      "planeMax": {
+        "x": 5,
+        "y": 5
+      },
+      "gridStep": 1.0
+    },
+    "stars": [
+      {
+        "starId": "s2_l19_star_1",
+        "coordinate": {
+          "x": -2,
+          "y": -5.0
+        },
+        "initialState": "Active",
+        "isControlPoint": true,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l19_star_2",
+        "coordinate": {
+          "x": -1,
+          "y": -3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l19_star_3",
+        "coordinate": {
+          "x": 0,
+          "y": -1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l19_star_4",
+        "coordinate": {
+          "x": 1,
+          "y": 1.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      },
+      {
+        "starId": "s2_l19_star_5",
+        "coordinate": {
+          "x": 2,
+          "y": 3.0
+        },
+        "initialState": "Active",
+        "isControlPoint": false,
+        "isDistractor": false,
+        "belongsToSolution": true,
+        "revealAfterAction": -1
+      }
+    ],
+    "referenceFunctions": [
+      {
+        "functionId": "func_s2_l19_01",
+        "type": "Linear",
+        "coefficients": [
+          2.0,
+          -1.0
+        ],
+        "domainRange": {
+          "x": -3,
+          "y": 3
+        }
+      }
+    ],
+    "answerOptions": [
+      {
+        "optionId": "opt_1",
+        "text": "(3, 5)",
+        "value": "3,5",
+        "isCorrect": true
+      },
+      {
+        "optionId": "opt_2",
+        "text": "(3, 6)",
+        "value": "3,6",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_3",
+        "text": "(4, 5)",
+        "value": "4,5",
+        "isCorrect": false
+      },
+      {
+        "optionId": "opt_4",
+        "text": "(3, 4)",
+        "value": "3,4",
+        "isCorrect": false
+      }
+    ],
+    "accuracyThreshold": 0.5,
+    "starRating": {
+      "threeStarMaxErrors": 0,
+      "twoStarMaxErrors": 1,
+      "oneStarMaxErrors": 2,
+      "timerAffectsRating": true,
+      "threeStarMaxTime": 90
+    },
+    "fragmentReward": 25
+  }
+]

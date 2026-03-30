@@ -50,7 +50,7 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
         # Only cache successful responses (2xx)
         if 200 <= response.status_code < 300:
             body = b""
-            async for chunk in response.body_iterator:  # type: ignore[union-attr]
+            async for chunk in response.body_iterator:  # type: ignore[attr-defined]
                 body += chunk if isinstance(chunk, bytes) else chunk.encode()
 
             import json
@@ -87,7 +87,7 @@ def _get_player_id(request: Request) -> str | None:
         return None
     token = auth_header[7:]
     try:
-        from jose import jwt
+        from jose import jwt  # type: ignore[import-untyped]
 
         settings = request.app.state.settings
         payload = jwt.decode(
@@ -97,6 +97,7 @@ def _get_player_id(request: Request) -> str | None:
             audience="starfunc-client",
             issuer="starfunc-api",
         )
-        return payload.get("sub")
+        sub = payload.get("sub")
+        return str(sub) if sub is not None else None
     except Exception:
         return None

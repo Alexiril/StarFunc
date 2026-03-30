@@ -15,6 +15,10 @@ from app.api.middleware import (
     ServerTimeMiddleware,
 )
 from app.api.routers.auth import router as auth_router
+from app.api.routers.content import router as content_router
+from app.api.routers.economy import router as economy_router
+from app.api.routers.lives import router as lives_router
+from app.api.routers.save import router as save_router
 from app.config import Settings
 from app.infrastructure.redis import close_redis_pool, create_redis_pool
 
@@ -74,6 +78,10 @@ def create_app() -> FastAPI:
 
     # --- Routers ---
     app.include_router(auth_router, prefix="/api/v1")
+    app.include_router(save_router, prefix="/api/v1")
+    app.include_router(economy_router, prefix="/api/v1")
+    app.include_router(lives_router, prefix="/api/v1")
+    app.include_router(content_router, prefix="/api/v1")
 
     return app
 

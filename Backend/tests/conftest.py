@@ -3,6 +3,8 @@ from collections.abc import AsyncGenerator
 
 import pytest
 
+from app.config import Settings
+
 
 @pytest.fixture(scope="session")
 def event_loop():
@@ -13,7 +15,7 @@ def event_loop():
 
 
 @pytest.fixture
-async def settings() -> AsyncGenerator:
+async def settings() -> AsyncGenerator[Settings, None]:
     """Provide test settings."""
     from app.config import Settings
 
