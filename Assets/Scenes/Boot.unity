@@ -576,6 +576,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f800fa1f1722a2df80c9e1a93fc2404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: StarFunc.Infrastructure::StarFunc.Infrastructure.BootInitializer
+  _balanceConfig: {fileID: 11400000, guid: 11df3fb67f7f0a44ead61ec905163bfc, type: 2}
+  _sectors: []
+  _onFragmentsChanged: {fileID: 11400000, guid: 6f94e2f23a8a8a7c5beb815c93b45266, type: 2}
+  _onLivesChanged: {fileID: 11400000, guid: afdaa9de2dd31f87186b40c4b9b11085, type: 2}
+  _onSectorUnlocked: {fileID: 11400000, guid: 1db3bfaf0a1be88a48edefd916d20527, type: 2}
+  _onSectorCompleted: {fileID: 11400000, guid: 755c7f52efa392631af721caeaff9122, type: 2}
 --- !u!4 &1966582820
 Transform:
   m_ObjectHideFlags: 0
@@ -687,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df317b0e52d98cb13863332060a41a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: StarFunc.UI::StarFunc.UI.LoadingOverlay
+  _canvasGroup: {fileID: 0}
 --- !u!224 &1989041782
 RectTransform:
   m_ObjectHideFlags: 0
