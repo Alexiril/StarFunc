@@ -25,39 +25,52 @@ MonoBehaviour:
     IsControlPoint: 1
     IsDistractor: 0
     BelongsToSolution: 1
-    RevealAfterAction: 
+    RevealAfterAction: 0
   - StarId: 1
     Coordinate: {x: 2, y: 2}
     InitialState: 3
     IsControlPoint: 0
     IsDistractor: 1
     BelongsToSolution: 0
-    RevealAfterAction: 
+    RevealAfterAction: 0
   - StarId: 2
     Coordinate: {x: 3, y: 3}
     InitialState: 2
     IsControlPoint: 0
     IsDistractor: 0
     BelongsToSolution: 0
-    RevealAfterAction: 
+    RevealAfterAction: 0
   - StarId: 3
     Coordinate: {x: 4, y: 4}
     InitialState: 4
     IsControlPoint: 0
     IsDistractor: 0
     BelongsToSolution: 0
-    RevealAfterAction: 
-  TaskType: 0
-  ReferenceFunctions: []
+    RevealAfterAction: 0
+  TaskType: 1
+  ReferenceFunctions:
+  - {fileID: 11400000, guid: c3eb263e16d2e1a469906f2f0f9fb334, type: 2}
   AnswerOptions:
-  - OptionId: Option 1
-    Text: Test
-    Value: 10
-    IsCorrect: 0
-  - OptionId: Option 2
-    Text: Test 2
-    Value: 15
+  - OptionId: opt_correct
+    Text: y = x
+    Value: 0
     IsCorrect: 1
+    Function: {fileID: 11400000, guid: c3eb263e16d2e1a469906f2f0f9fb334, type: 2}
+  - OptionId: opt_negx2
+    Text: y = -x + 2
+    Value: 0
+    IsCorrect: 0
+    Function: {fileID: 11400000, guid: 198b46fad012ab8d0a7bea1ee4a37ce7, type: 2}
+  - OptionId: opt_2x
+    Text: y = 2x
+    Value: 0
+    IsCorrect: 0
+    Function: {fileID: 11400000, guid: 854277abb99bba456b7f69712f6f68f4, type: 2}
+  - OptionId: opt_xplus1
+    Text: y = x + 1
+    Value: 0
+    IsCorrect: 0
+    Function: {fileID: 11400000, guid: 091cacd76bed9bec3b8a9c7f12ac5a63, type: 2}
   AccuracyThreshold: 0
   StarRating:
     ThreeStarMaxErrors: 0

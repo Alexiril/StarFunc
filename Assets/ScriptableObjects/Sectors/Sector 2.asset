@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2cd146e7b3bc9f3a03aa899fa40135, type: 3}
+  m_Name: Sector 2
+  m_EditorClassIdentifier: StarFunc.Data::StarFunc.Data.SectorData
+  SectorId: sector_2
+  DisplayName: "\u041B\u0438\u043D\u0435\u0439\u043D\u044B\u0435 \u043C\u0438\u0440\u044B"
+  SectorIndex: 2
+  Levels:
+  - {fileID: 11400000, guid: 665dd407a7c164ce4bde8950f7d1c8bd, type: 2}
+  - {fileID: 11400000, guid: d850475c5947d091d89cc3bd07050e06, type: 2}
+  - {fileID: 11400000, guid: c896dd50e7c160772b3cb4a4b597a482, type: 2}
+  - {fileID: 11400000, guid: 7d4e536c385f7918090e5d59013de2ee, type: 2}
+  - {fileID: 11400000, guid: e5184578ad74159b087ecb384f2129b1, type: 2}
+  - {fileID: 11400000, guid: 9ae3fe839f1c3bb08a5a55f640f1bd4e, type: 2}
+  - {fileID: 11400000, guid: 04f6085a00ec9a038955312f1275c0ec, type: 2}
+  - {fileID: 11400000, guid: fcbd0586b01c7f6189fe62e72aa0f32d, type: 2}
+  - {fileID: 11400000, guid: 98d3f5c309c580496af3f1ddd345f57f, type: 2}
+  - {fileID: 11400000, guid: a2c8922332ab314e88f41d0c315122dc, type: 2}
+  - {fileID: 11400000, guid: 1489413b2aeefaac0b5584087e24f1d5, type: 2}
+  - {fileID: 11400000, guid: 59f0eda429221bff18b009d3eee7f3a9, type: 2}
+  - {fileID: 11400000, guid: b9867202fbb74f653acb78be3376e2a8, type: 2}
+  - {fileID: 11400000, guid: d55a6519b4d1a846d97de32b65920db4, type: 2}
+  - {fileID: 11400000, guid: c31188f63c93cdb5a9d881f167d8845d, type: 2}
+  - {fileID: 11400000, guid: 217666afcbb4ec042ac676b958165da0, type: 2}
+  - {fileID: 11400000, guid: a39c243c549e3e1f7a9814153431930f, type: 2}
+  - {fileID: 11400000, guid: 76f17e52f5370abcdb7d1f69bad6a6ea, type: 2}
+  - {fileID: 11400000, guid: 6234b63bf94e99b7eac99c36902a33e9, type: 2}
+  - {fileID: 11400000, guid: a90b8a77cef11a3ca95c0acede1108fe, type: 2}
+  PreviousSector: {fileID: 11400000, guid: 1bc477044c3883d1ca4449f34d3946f5, type: 2}
+  RequiredStarsToUnlock: 30
+  ConstellationSprite: {fileID: 0}
+  ConstellationRestoredSprite: {fileID: 0}
+  SectorIcon: {fileID: 0}
+  AccentColor: {r: 0, g: 0, b: 0, a: 0}
+  StarColor: {r: 0, g: 0, b: 0, a: 0}
+  ConstellationStarAngles: []
+  IntroCutscene: {fileID: 0}
+  OutroCutscene: {fileID: 0}

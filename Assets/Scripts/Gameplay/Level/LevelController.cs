@@ -33,6 +33,7 @@ namespace StarFunc.Gameplay
         [SerializeField] CoordinatePlane _plane;
         [SerializeField] StarManager _starManager;
         [SerializeField] AnswerSystem _answerSystem;
+        [SerializeField] GraphRenderer _graphRenderer;
 
         [Header("SO Events")]
         [SerializeField] GameEvent<LevelData> _onLevelStarted;
@@ -203,6 +204,42 @@ namespace StarFunc.Gameplay
                 return;
             }
 
+            if (_levelData.TaskType == TaskType.AdjustGraph)
+            {
+                // AdjustGraph: single task per level, no star iteration.
+                if (_levelData.ReferenceFunctions == null || _levelData.ReferenceFunctions.Length == 0)
+                {
+                    Debug.LogError("[LevelController] AdjustGraph requires a ReferenceFunctions[0]; aborting task.");
+                    FailLevel("missing_reference_function");
+                    return;
+                }
+                _answerSystem.SetupFunctionEdit(
+                    _levelData.ReferenceFunctions[0],
+                    _levelData.MaxAdjustments);
+                ApplyInitialPartialReveal();
+                Debug.Log("[LevelController] ShowTask: AdjustGraph mode");
+                AwaitInput();
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.BuildFunction)
+            {
+                ShowBuildFunctionTask();
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.IdentifyError)
+            {
+                ShowIdentifyErrorTask();
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.RestoreConstellation)
+            {
+                ShowRestoreConstellationTask();
+                return;
+            }
+
             if (_currentStarIndex >= _solutionStars.Count)
             {
                 // All stars solved — calculate result.
@@ -239,6 +276,30 @@ namespace StarFunc.Gameplay
             if (_levelData.TaskType == TaskType.ChooseFunction)
             {
                 HandleChooseFunctionAnswer(answer);
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.AdjustGraph)
+            {
+                HandleAdjustGraphAnswer(answer);
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.BuildFunction)
+            {
+                HandleBuildFunctionAnswer(answer);
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.IdentifyError)
+            {
+                HandleIdentifyErrorAnswer(answer);
+                return;
+            }
+
+            if (_levelData.TaskType == TaskType.RestoreConstellation)
+            {
+                HandleRestoreConstellationAnswer(answer);
                 return;
             }
 
@@ -316,6 +377,259 @@ namespace StarFunc.Gameplay
                 _answerSystem.ResetSelection();
                 AwaitInput();
             }
+        }
+
+        /// <summary>
+        /// BuildFunction: type taken from <see cref="LevelData.ReferenceFunctions"/>[0].Type when
+        /// available; no reference graph is shown — control-point stars define the target curve.
+        /// </summary>
+        void ShowBuildFunctionTask()
+        {
+            FunctionType type = (_levelData.ReferenceFunctions != null && _levelData.ReferenceFunctions.Length > 0)
+                ? _levelData.ReferenceFunctions[0].Type
+                : FunctionType.Linear;
+            Vector2 domain = new(_levelData.PlaneMin.x, _levelData.PlaneMax.x);
+            _answerSystem.SetupBuildFunction(type, domain, _levelData.MaxAdjustments);
+            ApplyInitialPartialReveal();
+            Debug.Log($"[LevelController] ShowTask: BuildFunction mode ({type})");
+            AwaitInput();
+        }
+
+        /// <summary>
+        /// IdentifyError: all spawned stars are tappable; player marks suspected distractors.
+        /// </summary>
+        void ShowIdentifyErrorTask()
+        {
+            var allStars = _starManager.GetAllStars().ToArray();
+            _answerSystem.SetupIdentifyError(allStars);
+            Debug.Log($"[LevelController] ShowTask: IdentifyError mode ({allStars.Length} stars)");
+            AwaitInput();
+        }
+
+        /// <summary>
+        /// RestoreConstellation: per-star iteration via plane taps. Each tap auto-confirms;
+        /// the controller validates by distance to the next solution star's coordinate.
+        /// </summary>
+        void ShowRestoreConstellationTask()
+        {
+            if (_currentStarIndex >= _solutionStars.Count)
+            {
+                CalculateResult();
+                return;
+            }
+            var nextStar = _solutionStars[_currentStarIndex];
+            float threshold = _levelData.AccuracyThreshold > 0f ? _levelData.AccuracyThreshold : 0.5f;
+            _answerSystem.SetupRestoreConstellationStep(nextStar, threshold);
+            Debug.Log($"[LevelController] ShowTask: RestoreConstellation step " +
+                      $"{_currentStarIndex + 1}/{_solutionStars.Count} (target '{nextStar.StarId}')");
+            AwaitInput();
+        }
+
+        /// <summary>
+        /// If the level has PartialReveal enabled, hide everything beyond the initial
+        /// segment count on the comparison overlay (the reference curve shown by
+        /// AdjustGraph). BuildFunction has no reference to clip — the call is harmless
+        /// (no-op when no overlay is drawn). Per-correct-action increments aren't wired
+        /// for these modes since "correct action" is ambiguous when the answer is a
+        /// single confirm; designers can drive further reveals via custom hooks.
+        /// </summary>
+        void ApplyInitialPartialReveal()
+        {
+            if (_graphRenderer == null) return;
+            if (!_levelData.GraphVisibility.PartialReveal) return;
+
+            int initial = Mathf.Max(0, _levelData.GraphVisibility.InitialVisibleSegments);
+            _graphRenderer.SetComparisonVisibleSegments(initial);
+        }
+
+        void HandleAdjustGraphAnswer(PlayerAnswer answer)
+        {
+            // Delegate to ValidationSystem (RMS over control points).
+            var validationResult = _validationSystem.ValidateLevel(_levelData, answer);
+            bool isCorrect = validationResult.IsValid;
+
+            if (_onAnswerConfirmed) _onAnswerConfirmed.Raise(isCorrect);
+
+            _actionHistory.Push(new PlayerAction
+            {
+                ActionType = PlayerActionType.SelectAnswer,
+                TargetId = _levelData.LevelId,
+                PreviousState = LevelState.AwaitInput.ToString(),
+                NewState = isCorrect ? LevelState.CalculateResult.ToString() : LevelState.AwaitInput.ToString()
+            });
+
+            if (isCorrect)
+            {
+                Debug.Log("[LevelController] AdjustGraph: correct answer.");
+                CalculateResult();
+                return;
+            }
+
+            _errorCount++;
+            _attemptCount++;
+            Debug.Log($"[LevelController] AdjustGraph: incorrect. Errors: {_errorCount}");
+
+            if (_levelData.MaxAttempts > 0 && _attemptCount >= _levelData.MaxAttempts)
+            {
+                FailLevel("max_attempts_reached");
+                return;
+            }
+
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                FailLevel("no_lives");
+                return;
+            }
+
+            // Allow the player to keep adjusting; reset adjustment counter for the new attempt.
+            _answerSystem.FunctionEditor?.ResetAdjustments();
+            _answerSystem.ResetSelection();
+            AwaitInput();
+        }
+
+        void HandleBuildFunctionAnswer(PlayerAnswer answer)
+        {
+            // Same shape as AdjustGraph — control-point validation handled by ValidationSystem.
+            var validationResult = _validationSystem.ValidateLevel(_levelData, answer);
+            bool isCorrect = validationResult.IsValid;
+
+            if (_onAnswerConfirmed) _onAnswerConfirmed.Raise(isCorrect);
+
+            _actionHistory.Push(new PlayerAction
+            {
+                ActionType = PlayerActionType.SelectAnswer,
+                TargetId = _levelData.LevelId,
+                PreviousState = LevelState.AwaitInput.ToString(),
+                NewState = isCorrect ? LevelState.CalculateResult.ToString() : LevelState.AwaitInput.ToString()
+            });
+
+            if (isCorrect)
+            {
+                Debug.Log("[LevelController] BuildFunction: correct answer.");
+                CalculateResult();
+                return;
+            }
+
+            _errorCount++;
+            _attemptCount++;
+            Debug.Log($"[LevelController] BuildFunction: incorrect. Errors: {_errorCount}");
+
+            if (_levelData.MaxAttempts > 0 && _attemptCount >= _levelData.MaxAttempts)
+            {
+                FailLevel("max_attempts_reached");
+                return;
+            }
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                FailLevel("no_lives");
+                return;
+            }
+
+            _answerSystem.FunctionEditor?.ResetAdjustments();
+            _answerSystem.ResetSelection();
+            AwaitInput();
+        }
+
+        void HandleIdentifyErrorAnswer(PlayerAnswer answer)
+        {
+            var validationResult = _validationSystem.ValidateLevel(_levelData, answer);
+            bool isCorrect = validationResult.IsValid;
+
+            if (_onAnswerConfirmed) _onAnswerConfirmed.Raise(isCorrect);
+
+            _actionHistory.Push(new PlayerAction
+            {
+                ActionType = PlayerActionType.SelectAnswer,
+                TargetId = _levelData.LevelId,
+                PreviousState = LevelState.AwaitInput.ToString(),
+                NewState = isCorrect ? LevelState.CalculateResult.ToString() : LevelState.AwaitInput.ToString()
+            });
+
+            if (isCorrect)
+            {
+                Debug.Log($"[LevelController] IdentifyError: correct " +
+                          $"({_answerSystem.SelectedStarIds.Count} stars marked).");
+                CalculateResult();
+                return;
+            }
+
+            _errorCount++;
+            _attemptCount++;
+            Debug.Log($"[LevelController] IdentifyError: incorrect. Errors: {_errorCount}");
+
+            if (_levelData.MaxAttempts > 0 && _attemptCount >= _levelData.MaxAttempts)
+            {
+                FailLevel("max_attempts_reached");
+                return;
+            }
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                FailLevel("no_lives");
+                return;
+            }
+
+            // Marks deliberately persist across retries (player adjusts, doesn't restart).
+            _answerSystem.ResetSelection();
+            _answerSystem.SetActive(true);
+            AwaitInput();
+        }
+
+        void HandleRestoreConstellationAnswer(PlayerAnswer answer)
+        {
+            // Per-step: validate by distance to the next solution star's coordinate.
+            if (_currentStarIndex >= _solutionStars.Count)
+            {
+                CalculateResult();
+                return;
+            }
+
+            var target = _solutionStars[_currentStarIndex];
+            float threshold = _levelData.AccuracyThreshold > 0f ? _levelData.AccuracyThreshold : 0.5f;
+            float dist = Vector2.Distance(answer.SelectedCoordinate, target.Coordinate);
+            bool isCorrect = dist <= threshold;
+
+            if (_onAnswerConfirmed) _onAnswerConfirmed.Raise(isCorrect);
+
+            _actionHistory.Push(new PlayerAction
+            {
+                ActionType = PlayerActionType.SelectAnswer,
+                TargetId = target.StarId,
+                PreviousState = StarState.Hidden.ToString(),
+                NewState = isCorrect ? StarState.Restored.ToString() : StarState.Hidden.ToString()
+            });
+
+            if (isCorrect)
+            {
+                var entity = _starManager.GetStar(target.StarId);
+                if (entity != null) entity.SetState(StarState.Restored);
+                RaiseStarEvent(_onStarCollected, target, StarState.Restored);
+                Debug.Log($"[LevelController] RestoreConstellation: '{target.StarId}' placed " +
+                          $"(dist={dist:F2}, threshold={threshold:F2}).");
+                AdvanceToNextStar(target);
+                return;
+            }
+
+            _errorCount++;
+            _attemptCount++;
+            Debug.Log($"[LevelController] RestoreConstellation: tap missed '{target.StarId}' " +
+                      $"by {dist:F2} (threshold={threshold:F2}). Errors: {_errorCount}");
+
+            RaiseStarEvent(_onStarRejected, target, StarState.Incorrect);
+
+            if (_levelData.MaxAttempts > 0 && _attemptCount >= _levelData.MaxAttempts)
+            {
+                FailLevel("max_attempts_reached");
+                return;
+            }
+            if (_livesService != null && !_livesService.HasLives())
+            {
+                FailLevel("no_lives");
+                return;
+            }
+
+            // Re-arm the same step. SetupRestoreConstellationStep re-attaches the tap listener.
+            _answerSystem.SetActive(true);
+            ShowTask();
         }
 
         /// <summary>
@@ -448,6 +762,7 @@ namespace StarFunc.Gameplay
 
             Debug.Log($"[LevelController] Level failed: {failReason}");
 
+            if (_onLevelCompleted) _onLevelCompleted.Raise(localResult);
             if (_onLevelFailed) _onLevelFailed.Raise();
             SetState(LevelState.Failed);
 

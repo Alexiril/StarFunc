@@ -6,6 +6,7 @@
         "StarFunc.Data",
         "StarFunc.Meta",
         "StarFunc.Gameplay",
+        "StarFunc.Infrastructure",
         "Unity.TextMeshPro"
     ],
     "includePlatforms": [],

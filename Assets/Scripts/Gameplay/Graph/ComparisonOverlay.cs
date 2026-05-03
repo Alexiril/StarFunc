@@ -29,5 +29,8 @@ namespace StarFunc.Gameplay
         {
             _curve.Clear();
         }
+
+        /// <summary>Forward partial-reveal control to the underlying CurveRenderer.</summary>
+        public void SetVisibleSegments(int segmentCount) => _curve.SetVisibleSegments(segmentCount);
     }
 }

@@ -9,10 +9,10 @@ namespace StarFunc.Gameplay
     {
         [SerializeField] GhostEntity _ghostEntity;
 
-        [Header("SO Events (wire after Task 2.11)")]
-        [SerializeField] GameEvent _onStarCollected;
-        [SerializeField] GameEvent _onStarRejected;
-        [SerializeField] GameEvent _onLevelCompleted;
+        [Header("SO Events")]
+        [SerializeField] StarDataEvent _onStarCollected;
+        [SerializeField] StarDataEvent _onStarRejected;
+        [SerializeField] LevelResultEvent _onLevelCompleted;
 
         [Header("Settings")]
         [SerializeField] float _emotionDuration = 3f;
@@ -33,9 +33,9 @@ namespace StarFunc.Gameplay
             if (_onLevelCompleted) _onLevelCompleted.RemoveListener(OnLevelCompleted);
         }
 
-        void OnStarCollected() => ApplyEmotion(GhostEmotion.Happy);
-        void OnStarRejected() => ApplyEmotion(GhostEmotion.Sad);
-        void OnLevelCompleted() => ApplyEmotion(GhostEmotion.Excited);
+        void OnStarCollected(StarData _) => ApplyEmotion(GhostEmotion.Happy);
+        void OnStarRejected(StarData _) => ApplyEmotion(GhostEmotion.Sad);
+        void OnLevelCompleted(LevelResult _) => ApplyEmotion(GhostEmotion.Excited);
 
         void ApplyEmotion(GhostEmotion emotion)
         {

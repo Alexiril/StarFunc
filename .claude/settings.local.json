@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__unitymcp__*",
+      "Bash(python3)"
+    ]
+  }
+}

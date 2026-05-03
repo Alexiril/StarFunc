@@ -577,7 +577,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: StarFunc.Infrastructure::StarFunc.Infrastructure.BootInitializer
   _balanceConfig: {fileID: 11400000, guid: 11df3fb67f7f0a44ead61ec905163bfc, type: 2}
-  _sectors: []
+  _sectors:
+  - {fileID: 11400000, guid: 1bc477044c3883d1ca4449f34d3946f5, type: 2}
+  - {fileID: 11400000, guid: d7a0c786231e48ad584a1d3b9aecfa68, type: 2}
+  - {fileID: 11400000, guid: 655781a0856156e17ad0a8d85566775f, type: 2}
+  - {fileID: 11400000, guid: 921ef69c51b8d037196b8a86fd7fc254, type: 2}
+  - {fileID: 11400000, guid: acf2bb62a0e5a2575a2a848dfc680dbe, type: 2}
   _onFragmentsChanged: {fileID: 11400000, guid: 6f94e2f23a8a8a7c5beb815c93b45266, type: 2}
   _onLivesChanged: {fileID: 11400000, guid: afdaa9de2dd31f87186b40c4b9b11085, type: 2}
   _onSectorUnlocked: {fileID: 11400000, guid: 1db3bfaf0a1be88a48edefd916d20527, type: 2}

@@ -1,8 +1,9 @@
 ﻿<Solution>
+  <Project Path="StarFunc.Gameplay.csproj" />
   <Project Path="StarFunc.Infrastructure.csproj" />
+  <Project Path="MCPServer.csproj" />
   <Project Path="StarFunc.Data.csproj" />
   <Project Path="StarFunc.UI.csproj" />
-  <Project Path="StarFunc.Gameplay.csproj" />
   <Project Path="StarFunc.Core.csproj" />
   <Project Path="StarFunc.Input.csproj" />
   <Project Path="StarFunc.Meta.csproj" />

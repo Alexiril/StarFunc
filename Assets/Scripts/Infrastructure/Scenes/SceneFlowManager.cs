@@ -38,6 +38,21 @@ namespace StarFunc.Infrastructure
             StartCoroutine(UnloadLevelRoutine());
         }
 
+        /// <summary>Reload the currently active level (Retry).</summary>
+        public void RetryLevel()
+        {
+            if (!_isLevelLoaded || CurrentLevel == null) return;
+
+            StartCoroutine(RetryLevelRoutine(CurrentLevel));
+        }
+
+        /// <summary>Unload the level and return to the Hub scene underneath.</summary>
+        public void ReturnToHub() => UnloadLevel();
+
+        // Sector traversal isn't wired up yet, so "Next" falls back to Hub for now.
+        // Replace the body once HubScreen / SectorData navigation lands (Task 2.7).
+        public void LoadNextLevel() => UnloadLevel();
+
         /// <summary>
         /// Full scene replacement (used for Boot → Hub).
         /// </summary>
@@ -58,6 +73,28 @@ namespace StarFunc.Infrastructure
 
             overlay?.Hide();
             onLoaded?.Invoke();
+        }
+
+        IEnumerator RetryLevelRoutine(LevelData level)
+        {
+            var overlay = GetOverlay();
+            overlay?.Show();
+
+            var unload = SceneManager.UnloadSceneAsync("Level");
+            while (!unload.isDone)
+                yield return null;
+
+            _isLevelLoaded = false;
+            CurrentLevel = level;
+            LevelData.ActiveLevel = level;
+
+            var load = SceneManager.LoadSceneAsync("Level", LoadSceneMode.Additive);
+            while (!load.isDone)
+                yield return null;
+
+            SetHubUIActive(false);
+            _isLevelLoaded = true;
+            overlay?.Hide();
         }
 
         IEnumerator UnloadLevelRoutine()

@@ -20,6 +20,13 @@ namespace StarFunc.Gameplay
         /// </summary>
         public event Action<StarEntity> OnStarTapped;
 
+        /// <summary>
+        /// Fires when the player taps the plane and the tap doesn't land on any
+        /// interactable star. Coordinate is in plane-space.
+        /// Used by RestoreConstellation to capture placement attempts.
+        /// </summary>
+        public event Action<Vector2> OnPlaneTapped;
+
         void Update()
         {
             if (_stars.Count == 0) return;
@@ -62,6 +69,13 @@ namespace StarFunc.Gameplay
                     return;
                 }
             }
+
+            // No star hit — surface as a plane-level tap for modes like RestoreConstellation.
+            if (OnPlaneTapped != null && _plane != null)
+            {
+                Vector2 planePos = _plane.WorldToPlane(worldPos);
+                OnPlaneTapped.Invoke(planePos);
+            }
         }
 
         public void SpawnStars(StarConfig[] configs)
@@ -83,6 +97,9 @@ namespace StarFunc.Gameplay
             _stars.TryGetValue(starId, out var star);
             return star;
         }
+
+        /// <summary>Enumerate every spawned star. Used by IdentifyError to wire taps.</summary>
+        public IEnumerable<StarEntity> GetAllStars() => _stars.Values;
 
         public List<StarEntity> GetAllPlaced()
         {

@@ -1,4 +1,3 @@
-using StarFunc.Core;
 using StarFunc.Data;
 using System;
 using TMPro;
@@ -9,12 +8,6 @@ namespace StarFunc.UI
 {
     public class LevelResultScreen : UIScreen
     {
-        [SerializeField] private UIService _uiService;
-
-        [Header("Events")]
-        [SerializeField] LevelResultEvent _onLevelCompleted;
-        [SerializeField] GameEvent _onLevelFailed;
-
         [Header("Widgets")]
         [SerializeField] StarRatingDisplay _starRating;
         [SerializeField] FragmentsDisplay _fragmentsDisplay;
@@ -42,9 +35,6 @@ namespace StarFunc.UI
 
         void Awake()
         {
-            _onLevelCompleted.AddListener(HandleCompleted);
-            _onLevelFailed.AddListener(HandleFailed);
-
             if (_nextButton)
                 _nextButton.onClick.AddListener(() => OnNextClicked?.Invoke());
 
@@ -87,16 +77,6 @@ namespace StarFunc.UI
                 _constellationPreview.sprite = preview;
                 _constellationPreview.gameObject.SetActive(true);
             }
-        }
-
-        private void HandleCompleted(LevelResult result)
-        {
-            this.Setup(result);
-            _uiService.ShowScreen<LevelResultScreen>();
-        }
-
-        private void HandleFailed()
-        {
         }
     }
 }
